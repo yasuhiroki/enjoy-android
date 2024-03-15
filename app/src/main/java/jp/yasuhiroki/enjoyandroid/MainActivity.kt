@@ -17,13 +17,14 @@ import jp.yasuhiroki.enjoyandroid.ui.theme.EnjoyAndroidTheme
 
 class MainActivity : ComponentActivity() {
 
-    val src = MutableLiveData<String>("initial value is not pass to dest in lifecycle version 2.7.0")
+    val src = MutableLiveData<String>("initial value")
     val dest = src.map { it }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        Log.d("MainActivity", "dest: ${dest.value}") //  value is not null after lifecycle version 2.7.0
         dest.observe(this) {
-            Log.d("MainActivity", "dest: $it")
+            Log.d("MainActivity", "dest: $it") // does not call after lifecycle version 2.7.0
         }
         src.postValue("hello")
 
