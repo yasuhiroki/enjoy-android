@@ -1,4 +1,4 @@
-package jp.yasuhiroki.enjoyandroid
+package jp.yasuhiroki.newproject
 
 import org.junit.Test
 

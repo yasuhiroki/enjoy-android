@@ -1,4 +1,4 @@
-package jp.yasuhiroki.enjoyandroid.ui.theme
+package jp.yasuhiroki.newproject.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
