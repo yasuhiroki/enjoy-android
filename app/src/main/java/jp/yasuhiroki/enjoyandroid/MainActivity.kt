@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.MaterialTheme
@@ -52,12 +53,16 @@ fun Content() {
         Text("value-based")
         var text by remember { mutableStateOf("Hello") }
         ValueBasedTextField(value = text, onValueChange = { text = it })
+        Spacer(Modifier.height(4.dp))
+        ValueBasedBasicTextField(value = text, onValueChange = { text = it })
 
         Spacer(Modifier.height(8.dp))
 
         Text("state-based")
         val state = rememberTextFieldState("Hello")
         StateBasedTextField(state)
+        Spacer(Modifier.height(4.dp))
+        StateBasedBasicTextField(state)
     }
 }
 
@@ -78,8 +83,23 @@ fun ValueBasedTextField(
 }
 
 @Composable
+fun ValueBasedBasicTextField(
+    value: String,
+    onValueChange: (String) -> Unit
+) {
+    BasicTextField(modifier = Modifier.padding(8.dp), value = value, onValueChange = onValueChange)
+}
+
+@Composable
 fun StateBasedTextField(
     state: TextFieldState
 ) {
     TextField(state = state)
+}
+
+@Composable
+fun StateBasedBasicTextField(
+    state: TextFieldState
+) {
+    BasicTextField(modifier = Modifier.padding(8.dp), state = state)
 }
